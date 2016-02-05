@@ -2,6 +2,7 @@ class Admin::ProductsController < Admin::AdminController
   before_action :assign_product, only: [:show, :destroy]
 
   def index
+    @products = Product.all
   end
 
   def new
