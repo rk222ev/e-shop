@@ -36,8 +36,8 @@ class Admin::ProductsController < Admin::AdminController
       flash[:notice] = t(".success")
       redirect_to admin_products_path
     else
-      redirect_to admin_product_path(@product)
       flash[:notice] = t(".failed")
+      redirect_to admin_product_path(@product)
     end
   end
 
