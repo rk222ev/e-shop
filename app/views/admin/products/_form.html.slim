@@ -6,11 +6,18 @@
     .form-group.col-sm-6
       = f.label :price
       = f.text_field :price, class: "form-control"
+
     .form-group.col-sm-6
       = f.label :quantity
       = f.text_field :quantity, class: "form-control"
+
   .form-group
     = f.label :description
     = f.text_area :description, class: "form-control"
-  = f.submit "Save", class: "btn btn-default"
+
+  = f.submit "Save", class: "btn btn-primary"
+  = link_to "Remove",
+            admin_product_path(@product),
+            method: :delete,
+            class: "btn btn-danger"
 
