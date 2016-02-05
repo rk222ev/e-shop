@@ -1,0 +1,15 @@
+h3 Name:
+= @product.name
+
+h3 Price:
+= @product.price
+
+h3 Quantity:
+= @product.quantity
+
+h3 Description:
+= @product.description
+
+= link_to "Remove", admin_product_path(@product),
+                    method: :delete,
+                    data: { confim: "Are you sure?" }
