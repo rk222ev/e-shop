@@ -10,6 +10,10 @@ h3 Quantity:
 h3 Description:
 = @product.description
 
-= link_to "Remove", admin_product_path(@product),
-                    method: :delete,
-                    data: { confim: "Are you sure?" }
+- if @product.present?
+  div
+    = link_to "Edit", edit_admin_product_path(@product), class: "btn btn-default"
+    = link_to "Remove", admin_product_path(@product),
+                        method: :delete,
+                        class: "btn btn-danger",
+                        data: { confim: "Are you sure?" }
