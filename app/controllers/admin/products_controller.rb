@@ -1,5 +1,5 @@
 class Admin::ProductsController < Admin::AdminController
-  before_action :assign_product, only: [:show, :edit, :destroy]
+  before_action :assign_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -24,6 +24,11 @@ class Admin::ProductsController < Admin::AdminController
   end
 
   def edit
+  end
+
+  def update
+    @product.update!(product_params)
+    redirect_to admin_product_path
   end
 
   def destroy
