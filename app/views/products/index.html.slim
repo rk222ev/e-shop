@@ -1,0 +1,9 @@
+.col-xs-12.centered
+  h1 E-commerce
+- @products.each do |p|
+  .col-sm-4.product
+    = image_tag "placeholder_product_thumb", class: "img-responsive"
+    h2 = p.name
+    = p.price
+    |  kr
+

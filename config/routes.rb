@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  root "products#index"
+
+  devise_for :admins
 
   namespace :admin do
     root "pages#index"
     resources :products
   end
 
-  devise_for :admins
+  resources :products, only: [:index, :show]
+
 end
