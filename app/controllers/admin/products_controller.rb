@@ -13,7 +13,7 @@ class Admin::ProductsController < Admin::AdminController
     @product = Product.new(product_params)
 
     if @product.save
-      render :show
+      redirect_to admin_product_path(@product)
     else
       flash[:notice] = t(".failed")
       render :new
