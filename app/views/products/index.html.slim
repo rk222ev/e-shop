@@ -6,4 +6,6 @@
     h2 = p.name
     = p.price
     |  kr
+.col-xs-12.text-center
+  = will_paginate @products, renderer: BootstrapPagination::Rails
 
