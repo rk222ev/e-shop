@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "pages#index"
     resources :products
+    resources :admins
   end
 
   resources :products, only: [:index, :show]

@@ -1,4 +1,4 @@
-class Admin::ProductsController < Admin::AdminController
+class Admin::ProductsController < Admin::BaseController
   before_action :assign_product, only: [:show, :edit, :update, :destroy]
 
   def index

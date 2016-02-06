@@ -1,0 +1,22 @@
+h1 Administrators
+
+= link_to "Add admin", new_admin_admin_path, class: "btn btn-default"
+
+table.table.table-striped
+  tr
+    th Id
+    th Email
+    th Created
+    th
+  - @admins.each do |a|
+    tr
+      td = a.id
+      td = a.email
+      td = a.created_at
+      td
+        = link_to "Remove", admin_admin_path(a),
+                            method: :delete,
+                            data: { confim: "Are you sure?" }
+
+.col-xs-12.text-center
+  = will_paginate @admins, renderer: BootstrapPagination::Rails
