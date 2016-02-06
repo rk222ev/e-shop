@@ -1,4 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+@decrement_items_in_cart = ->
+  change_items_in_cart(-1)
 
+@increment_items_in_cart = ->
+  change_items_in_cart(1)
+
+change_items_in_cart = (n) ->
+  element = $("#items-in-cart")
+  count = element.text()
+  element.text(parseInt(count) + n)

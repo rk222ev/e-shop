@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
  before_action :cart
 
   def cart
-    session[:cart] ||= []
+    session
 
     Cart.configure do |config|
-      config.store = session[:cart]
+      config.store = session
     end
 
     @items_in_cart = Cart.count

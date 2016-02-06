@@ -2,12 +2,16 @@ table.table.table-striped
   tr
     th Name
     th Price
+    td
   - unless @products.present?
     tr
       td.text-center colspan = "2"
         |No products have been added
 
   - @products.each do |p|
-    tr
+    tr id="cart-item-#{p.id}"
       td = p.name
       td = p.price
+      td
+        = form_tag cart_path(id: p), method: :delete, remote: :true
+          = submit_tag "Remove from cart", class: "btn btn-default"

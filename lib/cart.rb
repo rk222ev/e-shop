@@ -9,11 +9,18 @@ module Cart
   end
 
   def self.products
-    store ?  Product.find(store) : []
+    return unless store
+    Product.find(store)
   end
 
   def self.add_product(product)
     store << product.id
+  end
+
+  def self.remove_product(product)
+    return if store.empty?
+    temp = store
+    store.delete_at(store.find_index(product.id))
   end
 
   def self.count
@@ -23,7 +30,7 @@ module Cart
   private
 
   def self.store
-    @config.store
+    @config.store[:cart] ||= []
   end
 
 end
