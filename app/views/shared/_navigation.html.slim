@@ -1,0 +1,30 @@
+
+/* nav.navbar.navbar-default */
+/*   .container */
+/*     .nav-header */
+      
+/*     p */
+/*       |something */
+
+
+.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"
+        span.sr-only
+          | Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to "E-Commerce", root_path, class: "navbar-brand"
+
+    .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
+      ul.nav.navbar-nav
+        li
+          = link_to "Products", products_path
+
+      ul.nav.navbar-nav.navbar-right
+        li
+          = link_to "#", class: "btn btn-default" do
+            span.glyphicon.glyphicon-shopping-cart aria-hidden="true"
+            span.badge 0
