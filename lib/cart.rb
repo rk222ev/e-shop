@@ -9,15 +9,21 @@ module Cart
   end
 
   def self.products
-    Product.find(@config.store)
+    store ?  Product.find(store) : []
   end
 
   def self.add_product(product)
-    @config.store << product.id
+    store << product.id
   end
 
   def self.count
-    @config.store.count
+    store&.count || 0
+  end
+
+  private
+
+  def self.store
+    @config.store
   end
 
 end

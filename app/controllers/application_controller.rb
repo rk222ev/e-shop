@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
  before_action :cart
 
   def cart
+    session[:cart] ||= []
+
     Cart.configure do |config|
       config.store = session[:cart]
     end
