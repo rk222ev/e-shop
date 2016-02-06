@@ -1,0 +1,18 @@
+.col-xs-12
+  = image_tag "placeholder_product", class: "img-responsive center-block"
+
+.col-sm-10
+  h3 Name:
+  = @product.name
+
+  h3 Price:
+  = @product.price
+
+  h3 Quantity:
+  = @product.quantity
+
+  h3 Description:
+  = @product.description
+
+.col-sm-2
+  |Add to cart
