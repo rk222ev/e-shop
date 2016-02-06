@@ -4,13 +4,15 @@ class CartsController < ApplicationController
   end
 
   def update
-<<<<<<< HEAD
-    cart << Product.find(params.require(:id))
-    flash[:notice] = t (".success")
-=======
     Cart.add_product(Product.find(params.require(:id)))
->>>>>>> 76b12dd... Introduce cart
 
-    redirect_to cart_path
+    respond_to do |format|
+      format.html do
+        flash[:notice] = t (".success")
+        redirect_to cart_path
+      end
+
+      format.js { }
+    end
   end
 end

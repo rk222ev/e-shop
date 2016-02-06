@@ -18,4 +18,4 @@
         li
           = link_to cart_path, class: "btn btn-default" do
             span.glyphicon.glyphicon-shopping-cart aria-hidden="true"
-            span.badge 0
+            span#items-in-cart.badge = @items_in_cart

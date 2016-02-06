@@ -15,6 +15,6 @@
   = @product.description
 
 .col-sm-2
-  = form_tag cart_path(id: @product), method: :patch
+  = form_tag cart_path(id: @product), method: :patch, remote: :true
     = submit_tag "Add to cart", class: "btn btn-default"
 
