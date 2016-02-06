@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::AdminController
   before_action :assign_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.all.paginate(page: params[:page], per_page: 50)
   end
 
   def new
