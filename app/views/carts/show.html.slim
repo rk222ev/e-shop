@@ -1,0 +1,13 @@
+table.table.table-striped
+  tr
+    th Name
+    th Price
+  - unless @products.present?
+    tr
+      td.text-center colspan = "2"
+        |No products have been added
+
+  - @products.each do |p|
+    tr
+      td = p.name
+      td = p.price

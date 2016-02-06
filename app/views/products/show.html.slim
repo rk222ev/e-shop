@@ -15,4 +15,6 @@
   = @product.description
 
 .col-sm-2
-  |Add to cart
+  = form_tag cart_path(id: @product), method: :patch
+    = submit_tag "Add to cart", class: "btn btn-default"
+
