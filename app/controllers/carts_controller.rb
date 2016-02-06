@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   def show
-    @products = Cart.products
+    @items = Cart.items
+    @total = Cart.total
   end
 
   def update

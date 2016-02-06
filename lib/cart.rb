@@ -23,6 +23,25 @@ module Cart
     store.delete_at(store.find_index(product.id))
   end
 
+  def self.product_quantity(product_id)
+    store.count(product_id)
+  end
+
+  def self.items
+    products.each_with_object([]) do |p, collection|
+      item = {}.tap do |i|
+        i[:product] = p
+        i[:quantity] = Cart.product_quantity(p.id)
+        i[:total] = p.price * i[:quantity]
+      end
+      collection << item
+    end
+  end
+
+  def self.total
+    products.sum { |p| p.price * product_quantity(p.id) }
+  end
+
   def self.count
     store&.count || 0
   end
