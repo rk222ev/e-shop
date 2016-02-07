@@ -1,7 +1,6 @@
 class CartsController < ApplicationController
   def show
-    @items = Cart.items
-    @total = Cart.total
+    prepare_cart
   end
 
   def update
@@ -10,6 +9,7 @@ class CartsController < ApplicationController
      else
        Cart.add_product(product)
      end
+    prepare_cart
     @items_in_cart = Cart.count
 
     respond_to do |format|
@@ -39,6 +39,11 @@ class CartsController < ApplicationController
   end
 
   private
+
+  def prepare_cart
+    @items = Cart.items
+    @total = Cart.total
+  end
 
   def product
     @product = Product.find(params.require(:id))

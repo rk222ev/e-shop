@@ -1,25 +1,2 @@
-table.table.table-striped
-  tr
-    th Name
-    th Quantity
-    td
-    th Price per item
-    th total
-  - unless @items.present?
-    tr
-      td.text-center colspan = "2"
-        |No products have been added
-
-  - @items.each.each do |i|
-    tr id="cart-item-#{i[:product].id}"
-      td = i[:product].name
-      td = i[:quantity]
-      td
-        = form_tag cart_path(id: i[:product].id), method: :patch, remote: :true
-          = submit_tag "+", class: "btn btn-default", name: "add-product"
-          = submit_tag "-", class: "btn btn-default", name: "remove-product"
-      td = i[:product].price
-      td = i[:total]
-.col-xs-12.text-right
-  h3 Total
-  = @total
+#cart-table.col-xs-12
+  = render "table"
