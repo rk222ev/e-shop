@@ -13,7 +13,7 @@
     - @order.order_rows.each.each do |row|
       tr
         td = row.product_id
-        td name
+        td = row.product.name
         td = row.quantity
         td = row.price_at_sale
         td = row.quantity * row.price_at_sale
