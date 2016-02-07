@@ -1,28 +1,23 @@
-== README
+## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Description
 
-Things you may want to cover:
+A very basic web shop.
 
-* Ruby version
+### Info about app
 
-* System dependencies
+- Ruby version
+    - Ruby 2.3.0
 
-* Configuration
+- System dependencies
+    - Docker
 
-* Database creation
+- Database creation
+    ```shell
+    $ bundle exec rake db:setup
+    ```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- How to run the test suite
+    ```shell
+    $ bundle exec rspec
+    ```
