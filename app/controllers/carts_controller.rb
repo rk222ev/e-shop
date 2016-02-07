@@ -10,6 +10,7 @@ class CartsController < ApplicationController
      else
        Cart.add_product(product)
      end
+    @items_in_cart = Cart.count
 
     respond_to do |format|
       format.html do

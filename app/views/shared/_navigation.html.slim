@@ -15,7 +15,5 @@
           = link_to "Products", products_path
 
       ul.nav.navbar-nav.navbar-right
-        li
-          = link_to cart_path, class: "btn btn-default" do
-            span.glyphicon.glyphicon-shopping-cart aria-hidden="true"
-            span#items-in-cart.badge = @items_in_cart
+        li#cart-icon
+          = render "shared/cart"
