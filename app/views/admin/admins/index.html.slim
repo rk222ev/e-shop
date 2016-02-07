@@ -14,8 +14,12 @@ table.table.table-striped
       td = a.email
       td = a.created_at
       td
+        = link_to "Edit",
+                  edit_admin_admin_path(a),
+                  class: "btn btn-default"
         = link_to "Remove", admin_admin_path(a),
                             method: :delete,
+                            class: "btn btn-danger",
                             data: { confim: "Are you sure?" }
 
 .col-xs-12.text-center
