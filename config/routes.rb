@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show, :update, :destroy]
 
+  post "checkout", to: "carts#checkout"
+
 end

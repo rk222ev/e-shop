@@ -22,9 +22,6 @@ class CartsController < ApplicationController
     end
   end
 
-  def patch
-  end
-
   def destroy
     Cart.remove_product(product)
 
@@ -36,6 +33,9 @@ class CartsController < ApplicationController
 
       format.js { }
     end
+  end
+
+  def checkout
   end
 
   private

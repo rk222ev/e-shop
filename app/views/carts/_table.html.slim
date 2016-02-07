@@ -20,6 +20,12 @@ table.table.table-striped
           = submit_tag "-", class: "btn btn-default", name: "remove-product"
       td = i[:product].price
       td = i[:total]
+
 .col-xs-12.text-right
   h3 Total
   = @total
+
+.col-xs-12.text-right
+  = form_tag checkout_path
+    = submit_tag "Place order", class: "btn btn-success"
+
