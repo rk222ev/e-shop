@@ -15,8 +15,9 @@ table.table.table-striped
       td = i[:product].name
       td = i[:quantity]
       td
-        = form_tag cart_path(id: i[:product].id), method: :delete, remote: :true
-          = submit_tag "-", class: "btn btn-default"
+        = form_tag cart_path(id: i[:product].id), method: :patch, remote: :true
+          = submit_tag "+", class: "btn btn-default", name: "add-product"
+          = submit_tag "-", class: "btn btn-default", name: "remove-product"
       td = i[:product].price
       td = i[:total]
 .col-xs-12.text-right

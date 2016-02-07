@@ -5,7 +5,11 @@ class CartsController < ApplicationController
   end
 
   def update
-    Cart.add_product(product)
+    if params["remove-product"].present?
+       Cart.remove_product(product)
+     else
+       Cart.add_product(product)
+     end
 
     respond_to do |format|
       format.html do
@@ -15,6 +19,9 @@ class CartsController < ApplicationController
 
       format.js { }
     end
+  end
+
+  def patch
   end
 
   def destroy
