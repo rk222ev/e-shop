@@ -2,4 +2,8 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.all.paginate(page: params[:page], per_page: 50)
   end
+
+  def show
+    @order = Order.find(params[:id])
+  end
 end
