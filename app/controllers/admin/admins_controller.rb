@@ -18,4 +18,9 @@ class Admin::AdminsController < Admin::BaseController
       render :new
     end
   end
+
+  def destroy
+    Admin.find(params.require(:id)).destroy
+    redirect_to admin_admins_path
+  end
 end
