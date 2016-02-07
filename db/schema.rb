@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205114717) do
+ActiveRecord::Schema.define(version: 20160207131818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,26 @@ ActiveRecord::Schema.define(version: 20160205114717) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
+
+  create_table "order_rows", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.boolean  "status"
+    t.integer  "quantity"
+    t.integer  "price_at_sale"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "order_rows", ["order_id"], name: "index_order_rows_on_order_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "status"
+    t.integer  "shipping_address_id"
+    t.integer  "billing_address_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
