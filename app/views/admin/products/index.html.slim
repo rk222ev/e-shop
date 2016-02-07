@@ -22,10 +22,11 @@ table.table.table-striped
       td = p.price
       td = p.quantity
       td
-        = link_to "Edit", edit_admin_product_path(p)
-        | |
+        = link_to "Edit", edit_admin_product_path(p),
+                          class: "btn btn-default"
         = link_to "Remove", admin_product_path(p),
                             method: :delete,
+                            class: "btn btn-danger",
                             data: { confim: "Are you sure?" }
 
 .col-xs-12.text-center
