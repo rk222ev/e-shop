@@ -1,0 +1,20 @@
+.col-xs-12
+  h1 Orders
+.col-xs-12
+table.table.table-striped
+  tr
+    th id
+    th status
+    th created
+    th last changed
+  - unless @orders.present?
+    tr
+      td.text-center colspan = "1"
+        |No orders have been places
+
+  - @orders.each.each do |o|
+    tr
+      td = o.id
+      td = o.status
+      td = o.created_at
+      td = o.updated_at

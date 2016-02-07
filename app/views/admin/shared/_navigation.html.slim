@@ -1,6 +1,6 @@
 ul.nav.nav-pills.nav-stacked
   li = link_to "Products", admin_products_url
-  li orders
+  li = link_to "Orders", admin_orders_path
   li = link_to "Admins", admin_admins_path
   li = link_to "Log out", destroy_admin_session_path, method: :delete
 
