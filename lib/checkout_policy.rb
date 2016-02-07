@@ -1,5 +1,5 @@
 module CheckoutPolicy
-  def self.checkout(items)
+  def self.checkout(shipping:, items:, billing: nil)
 
     # Validate data
     # Create order
@@ -9,6 +9,7 @@ module CheckoutPolicy
     # Raise order error matching the thing that went wrong
 
     order = Order.new
+    order.shipping_address = shipping
 
     items.each do |i|
       order.order_rows.new(product_id:    i[:product].id,
@@ -17,5 +18,6 @@ module CheckoutPolicy
     end
 
     order.save!
+    order
   end
 end
