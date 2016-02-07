@@ -9,15 +9,17 @@ class OrdersController < ApplicationController
   def create
     @order = CheckoutPolicy.checkout(shipping: Address.new(address_params),
                                      items: Cart.items)
+    Cart.destroy
     redirect_to root_path
   end
 
   def address_params
-    params.require(:order).require(:address)
-                          .permit(:firstname,
-                                  :lastname,
-                                  :street,
-                                  :city,
-                                  :postal_code)
+    params.require(:order)
+          .require(:address)
+          .permit(:firstname,
+                  :lastname,
+                  :street,
+                  :city,
+                  :postal_code)
   end
 end

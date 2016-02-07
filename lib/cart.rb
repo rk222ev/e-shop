@@ -46,6 +46,10 @@ module Cart
     store&.count || 0
   end
 
+  def self.destroy
+    @config.store.delete(:cart)
+  end
+
   private
 
   def self.store
