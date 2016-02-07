@@ -35,9 +35,6 @@ class CartsController < ApplicationController
     end
   end
 
-  def checkout
-  end
-
   private
 
   def prepare_cart

@@ -10,9 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:index, :show]
-
   resource :cart, only: [:show, :update, :destroy]
-
-  post "checkout", to: "carts#checkout"
+  resource :checkout, only: [:show]
 
 end
