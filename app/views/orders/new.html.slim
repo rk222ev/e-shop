@@ -1,9 +1,8 @@
 .col-sm-12
   h1 Checkout
 .col-sm-12
-  p
-    | Fill in your info
+
 
 .col-xs-12.text-right
-  = form_tag checkout_path, method: :patch
+  = form_tag order_path
     = submit_tag "Checkout", class: "btn btn-success"
