@@ -1,3 +1,5 @@
+require "checkout_policy"
+
 class CartsController < ApplicationController
   def show
     prepare_cart
@@ -33,6 +35,10 @@ class CartsController < ApplicationController
 
       format.js { }
     end
+  end
+
+  def checkout
+    CheckoutPolicy.checkout(Cart.items)
   end
 
   private
