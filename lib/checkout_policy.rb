@@ -17,7 +17,6 @@ module CheckoutPolicy
                            quantity:      i[:quantity])
     end
 
-    order.save!
     order
   end
 end
