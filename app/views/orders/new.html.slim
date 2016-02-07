@@ -2,6 +2,15 @@
   h1 Checkout
 .col-xs-12
   = form_for @order, url: order_path do |f|
+
+    -if @order.errors.any?
+      #error_explanation.col-xs-12.alert.alert-danger
+        h2 = pluralize(@order.errors.count, "error")
+          | prohibited this user from being saved:
+        ul
+        - @order.errors.full_messages.each do |msg|
+          li = msg
+
     = f.fields_for @order.shipping_address do |a|
       .row
         .form-group.col-sm-6
