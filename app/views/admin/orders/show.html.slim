@@ -1,5 +1,18 @@
-.col-xs-12
+.row
   h1 Order #{@order.id}
+
+.row.order-info
+  .col-xs-3
+    p Created at:
+    = @order.created_at
+
+  .col-xs-3
+    p Last changed:
+    = @order.updated_at
+
+  .col-xs-3
+    p Status:
+    = status_for @order.status
 
 .col-xs-12
   h2 Shipping address
