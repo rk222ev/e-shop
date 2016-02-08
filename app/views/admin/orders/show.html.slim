@@ -1,5 +1,6 @@
 .row
-  h1 Order #{@order.id}
+  .col-xs-12
+    h1 Order #{@order.id}
 
 .row.order-info
   .col-xs-3
@@ -14,38 +15,49 @@
     p Status:
     = status_for @order.status
 
-.col-xs-12
-  h2 Shipping address
+.row
+  .col-xs-12
+    h2 Shipping address
 
-.col-xs-12
-  table.table.table-striped
-    tr
-      th Name
-      th Street
-      th Postal code
-      th City
-    tr
-      td = @order.shipping_address.fullname
-      td = @order.shipping_address.street
-      td = @order.shipping_address.postal_code
-      td = @order.shipping_address.city
-
-.col-xs-12
-  h2 Products
-
-.col-xs-12
-  table.table.table-striped
-    tr
-      th Id
-      th Name
-      th Quantity
-      th Price per item
-      th total
-
-    - @order.order_rows.each.each do |row|
+.row
+  .col-xs-12
+    table.table.table-striped
       tr
-        td = row.product_id
-        td = row.product.name
-        td = row.quantity
-        td = row.price_at_sale
-        td = row.quantity * row.price_at_sale
+        th Name
+        th Street
+        th Postal code
+        th City
+      tr
+        td = @order.shipping_address.fullname
+        td = @order.shipping_address.street
+        td = @order.shipping_address.postal_code
+        td = @order.shipping_address.city
+
+.row
+  .col-xs-12
+    h2 Products
+
+.row
+  .col-xs-12
+    table.table.table-striped
+      tr
+        th Id
+        th Name
+        th Quantity
+        th Price per item
+        th total
+
+      - @order.order_rows.each.each do |row|
+        tr
+          td = row.product_id
+          td = row.product.name
+          td = row.quantity
+          td = row.price_at_sale
+          td = row.quantity * row.price_at_sale
+
+.row
+  .col-xs-12.text-right
+    = link_to "Remove", admin_order_path(@order),
+                        method: :delete,
+                        class: "btn btn-danger",
+                        data: { confirm: "Are your sure you want to remove the order?" }

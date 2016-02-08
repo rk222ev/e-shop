@@ -19,5 +19,6 @@ table.table.table-striped
       td = status_for o.status
       td = o.created_at
       td = o.updated_at
-      td = link_to "View", admin_order_path(o),
+      td
+        = link_to "View", admin_order_path(o),
                            class: "btn btn-default"
