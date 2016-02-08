@@ -32,6 +32,14 @@
         td = @order.shipping_address.street
         td = @order.shipping_address.postal_code
         td = @order.shipping_address.city
+.row
+  .col-xs-12.text-right
+    = link_to "Edit", edit_admin_order_path(@order),
+                        class: "btn btn-default"
+    = link_to "Remove", admin_order_path(@order),
+                        method: :delete,
+                        class: "btn btn-danger",
+                        data: { confirm: "Are your sure you want to remove the order?" }
 
 .row
   .col-xs-12
@@ -55,11 +63,3 @@
           td = row.price_at_sale
           td = row.quantity * row.price_at_sale
 
-.row
-  .col-xs-12.text-right
-    = link_to "Edit", edit_admin_order_path(@order),
-                        class: "btn btn-default"
-    = link_to "Remove", admin_order_path(@order),
-                        method: :delete,
-                        class: "btn btn-danger",
-                        data: { confirm: "Are your sure you want to remove the order?" }
