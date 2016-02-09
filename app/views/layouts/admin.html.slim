@@ -6,7 +6,9 @@ html
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
   body
-    .col-xs-12.col-md-3
-      = render "admin/shared/navigation"
-    .col-xs-12.col-md-9
-      = yield
+    .container
+      .col-xs-12.col-md-3
+        = render "admin/shared/navigation"
+      .col-xs-12.col-md-9
+        = flash_messages
+        = yield
