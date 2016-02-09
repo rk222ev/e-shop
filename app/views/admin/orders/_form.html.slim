@@ -1,28 +1,28 @@
-h1 Admin Order Form
-
 .col-xs-12
-  = form_for @order do |f|
+  = form_for [:admin, @order], remote: true do |f|
     .col-xs-12
       h3 Order details
       .form-group
         = f.label :status
-        = f.select :status, order_statuses, {},  class: "form-control"
+        = f.select :status, number_of_statuses, {},  class: "form-control"
     = f.fields_for @order.shipping_address do |shipping|
       .col-xs-12
         h3 Shipping address
-        .form-group.col-sm-6
+        .form-group.col-xs-6
           = shipping.label :firstname
           = shipping.text_field :firstname, class: "form-control"
-        .form-group.col-sm-6
+        .form-group.col-xs-6
           = shipping.label :lastname
           = shipping.text_field :lastname, class: "form-control"
-        .form-group.col-sm-12
+        .form-group.col-xs12
           = shipping.label :street
           = shipping.text_field :street, class: "form-control"
-        .form-group.col-sm-12
+        .form-group.col-xs-12
           = shipping.label :postal_code
           = shipping.text_field :postal_code, class: "form-control"
-        .form-group.col-sm-12
+        .form-group.col-xs-12
           = shipping.label :city
           = shipping.text_field :city, class: "form-control"
+    .col-xs-12.text-right
+        = f.submit "Update", class: "btn btn-success"
 
