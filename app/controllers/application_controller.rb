@@ -1,4 +1,4 @@
-require "cart"
+require "cart_service"
 
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
   def cart
     session
 
-    Cart.configure do |config|
+    CartService.configure do |config|
       config.store = session
     end
 
-    @items_in_cart = Cart.count
+    @items_in_cart = CartService.count
   end
 end

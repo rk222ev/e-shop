@@ -1,4 +1,4 @@
-module Cart
+module CartService
   class Configuration
     attr_accessor :store
   end
@@ -31,7 +31,7 @@ module Cart
     products.each_with_object([]) do |p, collection|
       item = {}.tap do |i|
         i[:product] = p
-        i[:quantity] = Cart.product_quantity(p.id)
+        i[:quantity] = product_quantity(p.id)
         i[:total] = p.price * i[:quantity]
       end
       collection << item

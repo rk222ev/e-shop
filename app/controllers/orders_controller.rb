@@ -9,9 +9,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = CheckoutPolicy.checkout(shipping: Address.new(address_params),
-                                     items: Cart.items)
+                                     items: CartService.items)
     if @order.save
-      Cart.destroy
+      CartService.destroy
       redirect_to root_path
     else
       render :new

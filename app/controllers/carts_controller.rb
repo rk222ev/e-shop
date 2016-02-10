@@ -7,12 +7,12 @@ class CartsController < ApplicationController
 
   def update
     if params["remove-product"].present?
-       Cart.remove_product(product)
+       CartService.remove_product(product)
      else
-       Cart.add_product(product)
+       CartService.add_product(product)
      end
     prepare_cart
-    @items_in_cart = Cart.count
+    @items_in_cart = CartService.count
 
     respond_to do |format|
       format.html do
@@ -25,7 +25,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    Cart.remove_product(product)
+    CartService.remove_product(product)
 
     respond_to do |format|
       format.html do
@@ -38,14 +38,14 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    CheckoutPolicy.checkout(Cart.items)
+    CheckoutPolicy.checkout(CartService.items)
   end
 
   private
 
   def prepare_cart
-    @items = Cart.items
-    @total = Cart.total
+    @items = CartService.items
+    @total = CartService.total
   end
 
   def product
