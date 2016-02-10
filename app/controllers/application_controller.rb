@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   def cart
     CartService.configure do |config|
       config.store = session
+      config.item = Product
     end
 
     @items_in_cart = CartService.count

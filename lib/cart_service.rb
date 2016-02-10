@@ -1,6 +1,14 @@
+##
+# Service module handling carts
+#
+# config:
+#   store - Object to store an array or item ids
+#   item  - The cartitem object
+#
+
 module CartService
   class Configuration
-    attr_accessor :store
+    attr_accessor :store, :item
   end
 
   def self.configure
@@ -10,7 +18,7 @@ module CartService
 
   def self.products
     return unless store
-    Product.find(store)
+    @config.item.find(store)
   end
 
   def self.add_product(product)
