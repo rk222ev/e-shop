@@ -8,8 +8,6 @@ class ApplicationController < ActionController::Base
  before_action :cart
 
   def cart
-    session
-
     CartService.configure do |config|
       config.store = session
     end
