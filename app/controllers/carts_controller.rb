@@ -1,4 +1,4 @@
-require "checkout_policy"
+require "order_service"
 
 class CartsController < ApplicationController
   def show
@@ -38,7 +38,7 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    CheckoutPolicy.checkout(CartService.items)
+    OrderService.checkout(CartService.items)
   end
 
   private

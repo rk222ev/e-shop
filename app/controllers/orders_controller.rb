@@ -1,4 +1,4 @@
-require "checkout_policy"
+require "order_service"
 
 class OrdersController < ApplicationController
   def new
@@ -8,8 +8,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = CheckoutPolicy.checkout(shipping: Address.new(address_params),
-                                     items: CartService.items)
+    @order = OrderService.checkout(shipping: Address.new(address_params),
+                                   cart: CartService)
     if @order.save
       CartService.destroy
       redirect_to root_path
