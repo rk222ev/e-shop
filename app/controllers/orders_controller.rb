@@ -4,12 +4,17 @@ class OrdersController < ApplicationController
   def new
     redirect_to cart_path, notice: t(".failure") if @items_in_cart < 1
     @order = Order.new
+    @order.billing_address = Address.new
     @order.shipping_address = Address.new
   end
 
   def create
-    @order = OrderService.checkout(shipping: Address.new(address_params),
-                                   cart: CartService)
+    billing = Address.new(address_params(:billing_address))
+    shipping = Address.new(address_params(:shipping_address))
+
+    @order = OrderService.checkout(billing: billing,
+                                   cart: CartService,
+                                   shipping: shipping)
     if @order.save
       CartService.destroy
       redirect_to root_path
@@ -18,9 +23,11 @@ class OrdersController < ApplicationController
     end
   end
 
-  def address_params
+  private
+
+  def address_params(type)
     params.require(:order)
-          .require(:address)
+          .require(type)
           .permit(:firstname,
                   :lastname,
                   :street,

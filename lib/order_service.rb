@@ -1,8 +1,9 @@
 module OrderService
   class OutOfStockError < RangeError; end
 
-  def self.checkout(shipping:, cart:, billing: nil)
+  def self.checkout(billing:, cart:, shipping:)
     order = Order.new
+    order.billing_address = billing
     order.shipping_address = shipping
 
     cart.items.each do |i|
