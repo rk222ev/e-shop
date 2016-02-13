@@ -37,12 +37,11 @@ module CartService
 
   def self.items
     products.each_with_object([]) do |p, collection|
-      product = {}.tap do |i|
+      collection << {}.tap do |i|
         i[:product] = p
         i[:quantity] = product_quantity(p.id)
         i[:total] = p.price * i[:quantity]
       end
-      collection << product
     end
   end
 
