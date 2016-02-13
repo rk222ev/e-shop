@@ -33,6 +33,8 @@ class Admin::OrdersController < Admin::BaseController
     redirect_to admin_orders_path
   end
 
+  private
+
   def billing_address_params
     params.require(:order)
           .require(:billing_address)
