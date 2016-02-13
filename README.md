@@ -11,6 +11,7 @@ A very basic web shop.
 
 - System dependencies
     - Docker
+    - ImageMagick see: https://github.com/thoughtbot/paperclip#image-processor
 
 - Database creation
     ```shell

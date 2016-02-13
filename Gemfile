@@ -10,6 +10,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'paperclip', '~> 4.3', '>= 4.3.5'
 gem 'pg', '~> 0.18.4'
 gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
