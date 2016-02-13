@@ -22,3 +22,10 @@ A very basic web shop.
     ```shell
     $ bundle exec rspec
     ```
+
+- Credentials 
+  ```
+  admin/
+  email: user@example.com
+  password: password
+  ```
