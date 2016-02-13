@@ -15,6 +15,10 @@
     = f.label :description
     = f.text_area :description, class: "form-control"
 
+  .form-group
+    = f.file_field :picture
+
+
   = f.submit "Save", class: "btn btn-primary"
   - if @product.id.present?
     = link_to "Remove",

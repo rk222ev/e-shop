@@ -19,4 +19,7 @@ vendor/bundle/
 !/log/.keep
 /tmp
 
+# Ignore system assets
+public/system
+
 .DS_Store

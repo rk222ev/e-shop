@@ -18,7 +18,7 @@ table.table.table-striped
   - @products.each do |p|
     tr
       td = p.id
-      td = p.name
+      td = link_to p.name, admin_product_path(p)
       td = p.price
       td = p.quantity
       td
