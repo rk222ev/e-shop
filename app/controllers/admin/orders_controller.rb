@@ -1,3 +1,5 @@
+require "order_status_policy"
+
 class Admin::OrdersController < Admin::BaseController
   def index
     @orders = Order.all.paginate(page: params[:page], per_page: 50)
@@ -17,9 +19,13 @@ class Admin::OrdersController < Admin::BaseController
     @order.billing_address.assign_attributes(billing_address_params)
     @order.shipping_address.assign_attributes(shipping_address_params)
 
+    OrderStatusPolicy.complete? @order
+
     if @order.save
       flash.now[:success] = t ".success"
     end
+  rescue OrderStatusPolicy::NotCompleteError
+    flash.now[:error] = t ".order_not_complete"
   end
 
   def destroy

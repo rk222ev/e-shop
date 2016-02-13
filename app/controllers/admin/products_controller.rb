@@ -27,8 +27,8 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def update
-    @product.update!(product_params)
-    redirect_to admin_product_path
+    # @product.update!(product_params)
+    # redirect_to admin_product_path
   end
 
   def destroy

@@ -3,7 +3,8 @@ class CreateOrderRows < ActiveRecord::Migration
     create_table :order_rows do |t|
       t.references :order, index: true
       t.references :product
-      t.boolean :status
+      t.boolean :status, default: false
+      t.boolean :sent, default: false
       t.integer :quantity
       t.integer :price_at_sale
 

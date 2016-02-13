@@ -47,11 +47,12 @@ ActiveRecord::Schema.define(version: 20160213125018) do
   create_table "order_rows", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
-    t.boolean  "status"
+    t.boolean  "status",        default: false
+    t.boolean  "sent",          default: false
     t.integer  "quantity"
     t.integer  "price_at_sale"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "order_rows", ["order_id"], name: "index_order_rows_on_order_id", using: :btree
