@@ -1,11 +1,11 @@
 .col-xs-12.text-center
   h1 E-commerce
-- @products.each do |p|
-  .col-sm-4.product
-    = link_to image_tag(p.picture(:thumb), class: "img-responsive"), product_path(p)
-    h2 = p.name
-    = p.price
-    |  kr
+  - @products.each do |p|
+    .col-sm-4.product.well
+      = link_to image_tag(p.picture(:thumb), class: "img-responsive"), product_path(p)
+      h2 = p.name
+      = p.price
+      |  kr
 .col-xs-12.text-center
   = will_paginate @products, renderer: BootstrapPagination::Rails
 
