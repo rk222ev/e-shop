@@ -6,6 +6,7 @@ class CartsController < ApplicationController
   end
 
   def update
+    # TODO Switch to links
     if params["remove-product"].present?
        CartService.remove_product(product)
      else
