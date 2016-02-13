@@ -1,0 +1,14 @@
+table.table.table-striped
+  tr
+    th Id
+    th Name
+    th Quantity
+    th
+    th Price per item
+    th total
+    th Status
+    th
+
+  - @order.order_rows.each.each do |row|
+    tr id="admin-order-product-row-#{row.id}"
+      = render "admin/order_rows/row", row: row
