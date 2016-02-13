@@ -1,4 +1,6 @@
 module OrderService
+  class OutOfStockError < RangeError; end
+
   def self.checkout(shipping:, cart:, billing: nil)
     order = Order.new
     order.shipping_address = shipping
@@ -15,5 +17,12 @@ module OrderService
     end
 
     order
+  end
+
+  def self.adjust_row_quantity(row, quantity)
+    raise OutOfStockError if row.product.quantity < quantity
+    row.product.quantity += -quantity
+    row.quantity += quantity
+    row.save
   end
 end
