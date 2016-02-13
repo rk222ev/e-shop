@@ -16,22 +16,8 @@
     = status_for @order.status
 
 .row
-  .col-xs-12
-    h2 Shipping address
+  = render "show_order_address"
 
-.row
-  .col-xs-12
-    table.table.table-striped
-      tr
-        th Name
-        th Street
-        th Postal code
-        th City
-      tr
-        td = @order.shipping_address.fullname
-        td = @order.shipping_address.street
-        td = @order.shipping_address.postal_code
-        td = @order.shipping_address.city
 .row
   .col-xs-12.text-right
     = link_to "Edit", edit_admin_order_path(@order),

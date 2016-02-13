@@ -1,0 +1,16 @@
+.row
+  .col-xs-12.col-sm-6
+    h2 Billing address
+    p = @order.billing_address.fullname
+    p = @order.billing_address.street
+    p = @order.billing_address.postal_code
+    p = @order.billing_address.city
+
+
+  .col-xs-12.col-sm-6
+    h2 Shipping address
+    p = @order.shipping_address.fullname
+    p = @order.shipping_address.street
+    p = @order.shipping_address.postal_code
+    p = @order.shipping_address.city
+
