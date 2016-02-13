@@ -26,9 +26,7 @@ module CartService
   end
 
   def self.remove_product(product)
-    return if store.empty?
-    temp = store
-    store.delete_at(store.find_index(product.id))
+    store.delete_at(store.find_index(product.id)) unless store.empty?
   end
 
   def self.product_quantity(product_id)
