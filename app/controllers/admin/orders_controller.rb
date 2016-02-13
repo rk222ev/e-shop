@@ -14,8 +14,12 @@ class Admin::OrdersController < Admin::BaseController
   def update
     @order = Order.includes(:shipping_address).find(params[:id])
     @order.assign_attributes(params.require(:order).permit(:status))
-    @order.shipping_address.assign_attributes(address_params)
-    @order.save
+    @order.billing_address.assign_attributes(billing_address_params)
+    @order.shipping_address.assign_attributes(shipping_address_params)
+
+    if @order.save
+      flash.now[:success] = t ".success"
+    end
   end
 
   def destroy
@@ -23,9 +27,15 @@ class Admin::OrdersController < Admin::BaseController
     redirect_to admin_orders_path
   end
 
-  def address_params
+  def billing_address_params
     params.require(:order)
-          .require(:address)
+          .require(:billing_address)
+          .permit(:firstname, :lastname, :street, :postal_code, :city)
+  end
+
+  def shipping_address_params
+    params.require(:order)
+          .require(:shipping_address)
           .permit(:firstname, :lastname, :street, :postal_code, :city)
   end
 end
