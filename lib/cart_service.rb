@@ -1,10 +1,15 @@
 ##
 # Service module handling carts
 #
-# config:
+# params:
 #   store - Object to store an array or product ids
 #   product  - The cartproduct object
 #
+# Example configuration:
+#   CartService.configure do |config|
+#     config.store = SOME_STORE
+#     config.product = SOME_PRODUCT
+#   end
 
 module CartService
   class Configuration
