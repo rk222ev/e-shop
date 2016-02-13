@@ -2,13 +2,13 @@
 # Service module handling carts
 #
 # config:
-#   store - Object to store an array or item ids
-#   item  - The cartitem object
+#   store - Object to store an array or product ids
+#   product  - The cartproduct object
 #
 
 module CartService
   class Configuration
-    attr_accessor :store, :item
+    attr_accessor :store, :product
   end
 
   def self.configure
@@ -18,7 +18,7 @@ module CartService
 
   def self.products
     return unless store
-    @config.item.find(store)
+    @config.product.find(store)
   end
 
   def self.add_product(product)
@@ -37,12 +37,12 @@ module CartService
 
   def self.items
     products.each_with_object([]) do |p, collection|
-      item = {}.tap do |i|
+      product = {}.tap do |i|
         i[:product] = p
         i[:quantity] = product_quantity(p.id)
         i[:total] = p.price * i[:quantity]
       end
-      collection << item
+      collection << product
     end
   end
 
