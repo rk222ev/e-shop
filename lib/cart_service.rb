@@ -22,8 +22,7 @@ module CartService
   end
 
   def self.products
-    return unless store
-    @config.product.find(store)
+    @config.product.find(store) if store
   end
 
   def self.add_product(product)
