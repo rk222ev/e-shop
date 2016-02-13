@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
-  has_many :order_rows, dependent: :destroy
+  has_many :order_rows, autosave: true,
+                        dependent: :destroy
 
   belongs_to :billing_address, class_name: "Address",
                                dependent: :destroy,
