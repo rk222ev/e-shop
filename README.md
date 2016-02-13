@@ -15,6 +15,7 @@ A very basic web shop.
 
 - Database creation
     ```shell
+    $ docker-compose start
     $ bundle exec rake db:setup
     ```
 
