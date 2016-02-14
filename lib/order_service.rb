@@ -8,7 +8,7 @@ module OrderService
 
     cart.items.each do |i|
       p = cart.products.select { |p| p.id == i[:product].id }
-      p.decrease_quantity(i[:quantity])
+      p.first.decrease_quantity(i[:quantity])
 
       order.order_rows.new(product_id:    i[:product].id,
                            price_at_sale: i[:product].price,
