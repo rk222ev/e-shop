@@ -33,7 +33,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def destroy
     if @product.destroy
-      flash[:notice] = t(".success")
+      flash[:success] = t(".success")
       redirect_to admin_products_path
     else
       flash[:notice] = t(".failed")
