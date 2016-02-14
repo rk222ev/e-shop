@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
                                    shipping: shipping)
     if @order.save
       CartService.destroy
+      flash[:success] = t ".success"
       redirect_to root_path
     else
       render :new
