@@ -7,10 +7,8 @@ module OrderService
     order.shipping_address = shipping
 
     cart.items.each do |i|
-      # TODO Improve
       p = cart.products.select { |p| p.id == i[:product].id }
-      p.first.quantity -= i[:quantity]
-      p.first.save
+      p.decrease_quantity(i[:quantity])
 
       order.order_rows.new(product_id:    i[:product].id,
                            price_at_sale: i[:product].price,
@@ -22,7 +20,7 @@ module OrderService
 
   def self.adjust_row_quantity(row, quantity)
     raise OutOfStockError if row.product.quantity < quantity
-    row.product.quantity += -quantity
+    row.product.decrease_quantity(quantity)
     row.quantity += quantity
     row.save
   end
