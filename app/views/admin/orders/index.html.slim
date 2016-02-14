@@ -22,7 +22,8 @@ table.table.table-striped
       td
         = link_to "View", admin_order_path(o),
                           class: "btn btn-default"
-        = link_to "Sent", admin_order_path(o, sent: true),
-                          method: :patch,
-                          remote: true,
-                          class: "btn btn-success"
+        - unless o.status == 4
+          = link_to "Sent", admin_order_path(o, sent: true),
+                            method: :patch,
+                            remote: true,
+                            class: "btn btn-success"
