@@ -26,12 +26,7 @@ class Admin::OrdersController < Admin::BaseController
     end
 
     OrderStatusPolicy.complete? @order
-
-    if @order.save
-      flash.now[:success] = t ".success"
-    else
-      flash.now[:error] = t ".failed"
-    end
+    flash.now[:success] = t ".success" if @order.save
   rescue OrderStatusPolicy::NotCompleteError
     flash.now[:error] = t ".order_not_complete"
   end
