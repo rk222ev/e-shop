@@ -15,9 +15,15 @@ table.table.table-striped
       td = i[:product].name
       td = i[:quantity]
       td
-        = form_tag cart_path(id: i[:product].id), method: :patch, remote: :true
-          = submit_tag "+", class: "btn btn-default", name: "add-product"
-          = submit_tag "-", class: "btn btn-default", name: "remove-product"
+        = link_to "+", cart_path(id: i[:product].id),
+                       class: "btn btn-default",
+                       method: :patch,
+                       remote: true
+        = link_to "-", cart_path(id: i[:product].id, decrease: 1),
+                       class: "btn btn-default",
+                       method: :patch,
+                       remote: true
+
       td = i[:product].price
       td = i[:total]
 

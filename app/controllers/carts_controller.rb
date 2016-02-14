@@ -6,8 +6,7 @@ class CartsController < ApplicationController
   end
 
   def update
-    # TODO Switch to links
-    if params["remove-product"].present?
+    if params["decrease"].present?
        CartService.remove_product(product)
      else
        CartService.add_product(product)
