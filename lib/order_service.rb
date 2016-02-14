@@ -21,7 +21,6 @@ module OrderService
   def self.adjust_row_quantity(row, quantity)
     raise OutOfStockError if row.product.quantity < quantity
     row.product.decrease_quantity(quantity)
-    row.quantity += quantity
-    row.save
+    row.increase_quantity(quantity)
   end
 end
