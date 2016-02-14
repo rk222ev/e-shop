@@ -20,7 +20,7 @@ table.table.table-striped
         = link_to "Remove", admin_admin_path(a),
                             method: :delete,
                             class: "btn btn-danger",
-                            data: { confim: "Are you sure?" }
+                            data: { confirm: "Are you sure?" }
 
 .col-xs-12.text-center
   = will_paginate @admins, renderer: BootstrapPagination::Rails
