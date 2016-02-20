@@ -62,6 +62,9 @@ ActiveRecord::Schema.define(version: 20160213125018) do
     t.datetime "updated_at",                      null: false
   end
 
+  add_index "orders", ["billing_address_id"], name: "index_orders_on_billing_address_id", using: :btree
+  add_index "orders", ["shipping_address_id"], name: "index_orders_on_shipping_address_id", using: :btree
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "price"
