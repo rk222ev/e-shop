@@ -35,14 +35,11 @@ ActiveRecord::Schema.define(version: 20160213125018) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.integer  "failed_attempts",    default: 0,  null: false
-    t.string   "unlock_token"
-    t.datetime "locked_at"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
-  add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
 
   create_table "order_rows", force: :cascade do |t|
     t.integer  "order_id"

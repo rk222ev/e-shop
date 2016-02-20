@@ -11,13 +11,10 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       t.inet     :last_sign_in_ip
 
       t.integer  :failed_attempts, default: 0, null: false
-      t.string   :unlock_token
-      t.datetime :locked_at
 
       t.timestamps null: false
     end
 
     add_index :admins, :email,                unique: true
-    add_index :admins, :unlock_token,         unique: true
   end
 end
