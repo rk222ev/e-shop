@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160213125018) do
   end
 
   add_index "order_rows", ["order_id"], name: "index_order_rows_on_order_id", using: :btree
+  add_index "order_rows", ["product_id"], name: "index_order_rows_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "status",              default: 0
