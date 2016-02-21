@@ -59,10 +59,7 @@ module CartService
     @config.store.delete(:cart)
   end
 
-  private
-
   def self.store
     @config.store[:cart] ||= []
   end
-
 end
