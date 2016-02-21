@@ -5,11 +5,9 @@ class Admin::OrderRowsController < ApplicationController
     @order = Order.find(params.require(:order_id))
     @row = OrderRow.includes(:product).find(params.require(:id))
     if mark_as_sent?
-      @row.sent = true
-      @row.save
+      @row.update(sent: true)
     else
-      quantity = params.require(:quantity).to_i
-      OrderService.adjust_row_quantity(@row, quantity)
+      adjust_quantity
     end
   rescue OrderService::OutOfStockError
     flash.now[:error] = t(".out_of_stock")
@@ -24,6 +22,8 @@ class Admin::OrderRowsController < ApplicationController
   private
 
   def adjust_quantity
+    quantity = params.require(:quantity).to_i
+    OrderService.adjust_row_quantity(@row, quantity)
   end
 
   def mark_as_sent?
