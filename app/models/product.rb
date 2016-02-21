@@ -1,7 +1,8 @@
 class Product < ActiveRecord::Base
   include Paperclip::Glue
 
-  default_scope { order id: :asc }
+  scope :by_id,     -> { order(id: :asc) }
+  scope :availible, -> { by_id.where("quantity > 0") }
 
   has_attached_file :picture,
                     styles: { thumb: "400x250>" },
