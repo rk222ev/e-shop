@@ -7,20 +7,20 @@ class CartsController < ApplicationController
 
   def update
     if params["decrease"].present?
-       CartService.remove_product(product)
-     else
-       CartService.add_product(product)
-     end
+      CartService.remove_product(product)
+    else
+      CartService.add_product(product)
+    end
     prepare_cart
     @items_in_cart = CartService.count
 
     respond_to do |format|
       format.html do
-        flash[:notice] = t (".success")
+        flash[:notice] = t ".success"
         redirect_to cart_path
       end
 
-      format.js { }
+      format.js {}
     end
   end
 
@@ -29,11 +29,11 @@ class CartsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        flash[:notice] = t (".success")
+        flash[:notice] = t ".success"
         redirect_to cart_path
       end
 
-      format.js { }
+      format.js {}
     end
   end
 

@@ -4,9 +4,9 @@ class Order < ActiveRecord::Base
 
   belongs_to :billing_address, class_name: "Address",
                                dependent: :destroy,
-                               autosave:true
+                               autosave: true
 
   belongs_to :shipping_address, class_name: "Address",
                                 dependent: :destroy,
-                                autosave:true
+                                autosave: true
 end

@@ -12,7 +12,7 @@ class Admin::OrderRowsController < ApplicationController
       OrderService.adjust_row_quantity(@row, quantity)
     end
   rescue OrderService::OutOfStockError
-    flash.now[:error] = t (".out_of_stock")
+    flash.now[:error] = t(".out_of_stock")
     render "out_of_stock"
   end
 

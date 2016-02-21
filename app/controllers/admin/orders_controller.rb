@@ -22,7 +22,6 @@ class Admin::OrdersController < Admin::BaseController
       @order.assign_attributes(params.require(:order).permit(:status))
       @order.billing_address.assign_attributes(billing_address_params)
       @order.shipping_address.assign_attributes(shipping_address_params)
-
     end
 
     OrderStatusPolicy.complete? @order
