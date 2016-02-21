@@ -8,6 +8,6 @@ module Admin::OrdersHelper
   end
 
   def status_for(n)
-    return order_statuses[n]
+    order_statuses[n]
   end
 end
