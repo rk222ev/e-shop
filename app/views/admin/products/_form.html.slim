@@ -1,4 +1,12 @@
 = form_for [:admin, @product] do |f|
+  -if @product.errors.any?
+    #error_explanation.col-xs-12.alert.alert-danger
+      h2 = pluralize(@product.errors.count, "error")
+        | prohibited this user from being saved:
+      ul
+      - @product.errors.full_messages.each do |msg|
+        li = msg
+
   .form-group
     = f.label :name
     = f.text_field :name, class: "form-control"

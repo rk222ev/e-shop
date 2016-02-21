@@ -14,8 +14,8 @@ class Admin::ProductsController < Admin::BaseController
 
     if @product.save
       redirect_to admin_product_path(@product)
+      flash[:success] = t ".success"
     else
-      flash[:notice] = t(".failed")
       render :new
     end
   end
