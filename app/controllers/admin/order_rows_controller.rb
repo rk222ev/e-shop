@@ -1,5 +1,3 @@
-require "order_service"
-
 class Admin::OrderRowsController < ApplicationController
   def update
     @order = Order.find(params.require(:order_id))

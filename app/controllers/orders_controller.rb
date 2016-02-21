@@ -1,5 +1,3 @@
-require "order_service"
-
 class OrdersController < ApplicationController
   def new
     redirect_to cart_path, notice: t(".failure") if @items_in_cart < 1

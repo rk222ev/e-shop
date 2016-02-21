@@ -1,5 +1,3 @@
-require "order_service"
-
 class CartsController < ApplicationController
   def show
     prepare_cart
