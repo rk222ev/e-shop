@@ -27,8 +27,12 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def update
-    @product.update!(product_params)
-    redirect_to admin_product_path
+    if @product.update(product_params)
+      flash[:success] = t ".success"
+      redirect_to admin_product_path
+    else
+      render :edit
+    end
   end
 
   def destroy
