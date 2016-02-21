@@ -9,6 +9,10 @@ table.table.table-striped
     th Status
     th
 
-  - @order.order_rows.each.each do |row|
-    tr id="admin-order-product-row-#{row.id}"
-      = render "admin/order_rows/row", row: row
+  - if @order.order_rows.empty?
+    tr
+      td.text-center colspan="8" No items added
+  - else
+    - @order.order_rows.each.each do |row|
+      tr id="admin-order-product-row-#{row.id}"
+        = render "admin/order_rows/row", row: row
