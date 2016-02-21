@@ -18,14 +18,17 @@ class Admin::AdminsController < Admin::BaseController
       flash.keep[:success] = t ".success"
       redirect_to admin_admins_path
     else
-      flash[:notice] = t ".failure"
       render :new
     end
   end
 
   def update
-    @admin.update!(admin_params)
-    redirect_to admin_admins_path
+    if @admin.update(admin_params)
+      flash[:success] = t ".success"
+      redirect_to admin_admins_path
+    else
+      render :edit
+    end
   end
 
   def destroy

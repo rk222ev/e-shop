@@ -1,4 +1,12 @@
 = form_for [:admin, @admin] do |f|
+  -if @admin.errors.any?
+    #error_explanation.col-xs-12.alert.alert-danger
+      h2 = pluralize(@admin.errors.count, "error")
+        | prohibited this user from being saved:
+      ul
+      - @admin.errors.full_messages.each do |msg|
+        li = msg
+
   .form-group
     = f.label :email
     = f.text_field :email, class: "form-control", type: :email
