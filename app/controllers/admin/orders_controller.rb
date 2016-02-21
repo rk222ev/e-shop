@@ -14,20 +14,12 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def update
-    @order = Order.includes(:shipping_address, :order_rows).find(params[:id])
-    if params[:sent]
-      @order.order_rows.each { |r| r.sent = true }
-      @order.status = 4
-    else
-      @order.assign_attributes(params.require(:order).permit(:status))
-      @order.billing_address.assign_attributes(billing_address_params)
-      @order.shipping_address.assign_attributes(shipping_address_params)
-    end
+    @order = Order.includes(:billing_address,
+                            :shipping_address,
+                            :order_rows).find(params[:id])
 
-    OrderStatusPolicy.complete? @order
-    flash.now[:success] = t ".success" if @order.save
-  rescue OrderStatusPolicy::NotCompleteError
-    flash.now[:error] = t ".order_not_complete"
+    params[:sent] ? mark_as_sent : update_order
+    check_for_completion
   end
 
   def destroy
@@ -37,15 +29,27 @@ class Admin::OrdersController < Admin::BaseController
 
   private
 
-  def billing_address_params
+  def address_params(type)
     params.require(:order)
-          .require(:billing_address)
+          .require(type)
           .permit(:firstname, :lastname, :street, :postal_code, :city)
   end
 
-  def shipping_address_params
-    params.require(:order)
-          .require(:shipping_address)
-          .permit(:firstname, :lastname, :street, :postal_code, :city)
+  def check_for_completion
+    OrderStatusPolicy.complete? @order
+    flash.now[:success] = t ".success" if @order.save
+  rescue OrderStatusPolicy::NotCompleteError
+    flash.now[:error] = t ".order_not_complete"
+  end
+
+  def mark_as_sent
+    @order.order_rows.each { |r| r.sent = true }
+    @order.status = 4
+  end
+
+  def update_order
+    @order.assign_attributes(params.require(:order).permit(:status))
+    @order.billing_address.assign_attributes(address_params(:billing_address))
+    @order.shipping_address.assign_attributes(address_params(:shipping_address))
   end
 end
