@@ -6,11 +6,7 @@ class CartsController < ApplicationController
   end
 
   def update
-    if params["decrease"].present?
-      CartService.remove_product(product)
-    else
-      CartService.add_product(product)
-    end
+    adjust_cart
     prepare_cart
     @items_in_cart = CartService.count
 
@@ -42,6 +38,14 @@ class CartsController < ApplicationController
   end
 
   private
+
+  def adjust_cart
+    if params["decrease"].present?
+      CartService.remove_product(product)
+    else
+      CartService.add_product(product)
+    end
+  end
 
   def prepare_cart
     @items = CartService.items
