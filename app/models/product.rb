@@ -3,9 +3,12 @@ class Product < ActiveRecord::Base
 
   default_scope { order id: :asc }
 
-  has_attached_file :picture, styles: { thumb: "400x250>" },
-                              default_url: ":style/missing.png"
-  validates_attachment_content_type :picture, content_type: %r{/\Aimage\/.*\Z/}
+  has_attached_file :picture,
+                    styles: { thumb: "400x250>" },
+                    default_url: ":style/missing.png"
+  validates_attachment_content_type :picture,
+                                    content_type: %r{/\Aimage\/.*\Z/},
+                                    if: -> { picture.content_type.blank? }
 
   validates :description, presence: true
   validates :name, presence: true
